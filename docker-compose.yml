@@ -1,23 +1,31 @@
-jobs:
-  build-and-test:
-    runs-on: ubuntu-latest
+version: '3.8'
 
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongodb:27017/production
+    depends_on:
+      - mongodb
+    restart: unless-stopped
+    networks:
+      - app-network
 
-    - name: Install Docker
-      uses: docker/setup-buildx-action@v2
+  mongodb:
+    image: mongo:5.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - app-network
 
-    - name: Install Docker Compose
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y docker-compose
+networks:
+  app-network:
+    driver: bridge
 
-    - name: Build and start services
-      run: |
-        docker-compose up -d --build
-        docker-compose exec app npm test  # Jalankan tes di dalam kontainer
-
-    - name: Stop and remove services
-      run: docker-compose down
+volumes:
+  mongodb_data:
