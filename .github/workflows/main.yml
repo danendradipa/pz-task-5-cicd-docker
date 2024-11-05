@@ -1,4 +1,4 @@
-name: CI / CD Book Managements
+name: CI / CD Book Management
 
 on:
   push:
