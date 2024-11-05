@@ -1,0 +1,67 @@
+{
+  "compilerOptions": {
+    // Target dan Module settings
+    "target": "ES2018",
+    "module": "commonjs",
+    "lib": ["ES2018", "ESNext.AsyncIterable"],
+    "moduleResolution": "node",
+
+    // Output settings
+    "outDir": "./dist",
+    "rootDir": "./src",
+    
+    // Strict Type-Checking
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    
+    // Additional Checks
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    
+    // Module Resolution
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    
+    // Source Map
+    "sourceMap": true,
+    
+    // Type Definitions
+    "typeRoots": ["./node_modules/@types", "./src/types"],
+    
+    // Advanced
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    
+    // JavaScript Support
+    "allowJs": true,
+    "checkJs": false
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/**/*.test.ts",
+    "src/**/*.spec.ts"
+  ],
+  "ts-node": {
+    "transpileOnly": true,
+    "files": true
+  }
+}
