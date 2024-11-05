@@ -53,10 +53,13 @@ jobs:
     - name: Build and start services
       run: |
         docker-compose up -d --build
-        docker-compose exec app npm test  # Run tests in Docker container
+
+    - name: Run tests in Docker container
+      run: docker-compose exec -T app npm test  # Menambahkan -T untuk menonaktifkan TTY
 
     - name: Stop and remove services
       run: docker-compose down
+
 
   build-and-push:
     needs: build-and-test
