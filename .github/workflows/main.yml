@@ -79,8 +79,8 @@ jobs:
         context: .
         push: true
         tags: |
-          your-dockerhub-username/${{ env.IMAGE_NAME }}:latest
-          your-dockerhub-username/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          danendradipa/${{ env.IMAGE_NAME }}:latest
+          danendradipa/${{ env.IMAGE_NAME }}:${{ github.sha }}
 
   deploy:
     needs: build-and-push
